@@ -1,0 +1,1125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="packageMapper.base.AppLogBaseMapper">
+
+
+    <insert id="insertAppLog"  useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `app_log`
+        (
+        <trim suffixOverrides=",">
+                    <if test="id!=null">
+                        `id`,
+                    </if>
+                    <if test="dt!=null">
+                        `dt`,
+                    </if>
+                    <if test="uid!=null">
+                        `uid`,
+                    </if>
+                    <if test="ip!=null">
+                        `ip`,
+                    </if>
+                    <if test="method!=null">
+                        `method`,
+                    </if>
+                    <if test="url!=null">
+                        `url`,
+                    </if>
+                    <if test="v!=null">
+                        `v`,
+                    </if>
+                    <if test="ua!=null">
+                        `ua`,
+                    </if>
+                    <if test="aes!=null">
+                        `aes`,
+                    </if>
+                    <if test="res!=null">
+                        `res`,
+                    </if>
+                    <if test="serverip!=null">
+                        `serverip`,
+                    </if>
+                    <if test="reqtime!=null">
+                        `reqtime`,
+                    </if>
+                    <if test="status!=null">
+                        `status`,
+                    </if>
+        </trim>
+        )
+        VALUES
+        (
+        <trim suffixOverrides=",">
+                <if test="id!=null">
+                    #{id},
+                </if>
+                <if test="dt!=null">
+                    #{dt},
+                </if>
+                <if test="uid!=null">
+                    #{uid},
+                </if>
+                <if test="ip!=null">
+                    #{ip},
+                </if>
+                <if test="method!=null">
+                    #{method},
+                </if>
+                <if test="url!=null">
+                    #{url},
+                </if>
+                <if test="v!=null">
+                    #{v},
+                </if>
+                <if test="ua!=null">
+                    #{ua},
+                </if>
+                <if test="aes!=null">
+                    #{aes},
+                </if>
+                <if test="res!=null">
+                    #{res},
+                </if>
+                <if test="serverip!=null">
+                    #{serverip},
+                </if>
+                <if test="reqtime!=null">
+                    #{reqtime},
+                </if>
+                <if test="status!=null">
+                    #{status},
+                </if>
+        </trim>
+        )
+    </insert>
+
+
+
+
+    <update id="updateAppLog">
+        UPDATE `app_log`
+        SET
+        <trim suffixOverrides=",">
+            <if test="dt != null">
+                `dt` = #{dt},
+            </if>
+            <if test="uid != null and uid!=''">
+                `uid` = #{uid},
+            </if>
+            <if test="ip != null and ip!=''">
+                `ip` = #{ip},
+            </if>
+            <if test="method != null and method!=''">
+                `method` = #{method},
+            </if>
+            <if test="url != null and url!=''">
+                `url` = #{url},
+            </if>
+            <if test="v != null and v!=''">
+                `v` = #{v},
+            </if>
+            <if test="ua != null and ua!=''">
+                `ua` = #{ua},
+            </if>
+            <if test="aes != null">
+                `aes` = #{aes},
+            </if>
+            <if test="res != null and res!=''">
+                `res` = #{res},
+            </if>
+            <if test="serverip != null and serverip!=''">
+                `serverip` = #{serverip},
+            </if>
+            <if test="reqtime != null">
+                `reqtime` = #{reqtime},
+            </if>
+            <if test="status != null and status!=''">
+                `status` = #{status},
+            </if>
+        </trim>
+        WHERE
+        <trim suffixOverrides="and">
+                `id` = #{id} and
+        </trim>
+    </update>
+
+    <update id="update">
+        UPDATE `app_log`
+        SET
+        <trim suffixOverrides=",">
+        <if test="set.dt != null">
+            `dt` = #{set.dt},
+        </if>
+        <if test="set.uid != null and set.uid!=''">
+            `uid` = #{set.uid},
+        </if>
+        <if test="set.ip != null and set.ip!=''">
+            `ip` = #{set.ip},
+        </if>
+        <if test="set.method != null and set.method!=''">
+            `method` = #{set.method},
+        </if>
+        <if test="set.url != null and set.url!=''">
+            `url` = #{set.url},
+        </if>
+        <if test="set.v != null and set.v!=''">
+            `v` = #{set.v},
+        </if>
+        <if test="set.ua != null and set.ua!=''">
+            `ua` = #{set.ua},
+        </if>
+        <if test="set.aes != null">
+            `aes` = #{set.aes},
+        </if>
+        <if test="set.res != null and set.res!=''">
+            `res` = #{set.res},
+        </if>
+        <if test="set.serverip != null and set.serverip!=''">
+            `serverip` = #{set.serverip},
+        </if>
+        <if test="set.reqtime != null">
+            `reqtime` = #{set.reqtime},
+        </if>
+        <if test="set.status != null and set.status!=''">
+            `status` = #{set.status},
+        </if>
+        </trim>
+        <trim prefix="where" suffixOverrides="and | or">
+                <if test="where.idList != null">
+                    `id` in
+                    <foreach collection="where.idList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.idSt !=null">
+                `id` >= #{where.idSt} and
+            </if>
+            <if test="where.idEd!=null">
+                `id` &lt;= #{where.idEd} and
+            </if>
+                <if test="where.dtList != null">
+                    `dt` in
+                    <foreach collection="where.dtList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.dtSt !=null">
+                `dt` >= #{where.dtSt} and
+            </if>
+            <if test="where.dtEd!=null">
+                `dt` &lt;= #{where.dtEd} and
+            </if>
+                <if test="where.uidList != null">
+                    `uid` in
+                    <foreach collection="where.uidList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyUid!=null and where.fuzzyUid.size()>0">
+                (
+                <foreach collection="where.fuzzyUid"  separator="or" item="item">
+                    `Uid` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyUid!=null and where.rightFuzzyUid.size()>0">
+                (
+                <foreach collection="where.rightFuzzyUid"  separator="or" item="item">
+                    `Uid` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.ipList != null">
+                    `ip` in
+                    <foreach collection="where.ipList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyIp!=null and where.fuzzyIp.size()>0">
+                (
+                <foreach collection="where.fuzzyIp"  separator="or" item="item">
+                    `Ip` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyIp!=null and where.rightFuzzyIp.size()>0">
+                (
+                <foreach collection="where.rightFuzzyIp"  separator="or" item="item">
+                    `Ip` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.methodList != null">
+                    `method` in
+                    <foreach collection="where.methodList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyMethod!=null and where.fuzzyMethod.size()>0">
+                (
+                <foreach collection="where.fuzzyMethod"  separator="or" item="item">
+                    `Method` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyMethod!=null and where.rightFuzzyMethod.size()>0">
+                (
+                <foreach collection="where.rightFuzzyMethod"  separator="or" item="item">
+                    `Method` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.urlList != null">
+                    `url` in
+                    <foreach collection="where.urlList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyUrl!=null and where.fuzzyUrl.size()>0">
+                (
+                <foreach collection="where.fuzzyUrl"  separator="or" item="item">
+                    `Url` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyUrl!=null and where.rightFuzzyUrl.size()>0">
+                (
+                <foreach collection="where.rightFuzzyUrl"  separator="or" item="item">
+                    `Url` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.vList != null">
+                    `v` in
+                    <foreach collection="where.vList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyV!=null and where.fuzzyV.size()>0">
+                (
+                <foreach collection="where.fuzzyV"  separator="or" item="item">
+                    `V` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyV!=null and where.rightFuzzyV.size()>0">
+                (
+                <foreach collection="where.rightFuzzyV"  separator="or" item="item">
+                    `V` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.uaList != null">
+                    `ua` in
+                    <foreach collection="where.uaList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyUa!=null and where.fuzzyUa.size()>0">
+                (
+                <foreach collection="where.fuzzyUa"  separator="or" item="item">
+                    `Ua` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyUa!=null and where.rightFuzzyUa.size()>0">
+                (
+                <foreach collection="where.rightFuzzyUa"  separator="or" item="item">
+                    `Ua` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.aesList != null">
+                    `aes` in
+                    <foreach collection="where.aesList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.aesSt !=null">
+                `aes` >= #{where.aesSt} and
+            </if>
+            <if test="where.aesEd!=null">
+                `aes` &lt;= #{where.aesEd} and
+            </if>
+                <if test="where.resList != null">
+                    `res` in
+                    <foreach collection="where.resList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyRes!=null and where.fuzzyRes.size()>0">
+                (
+                <foreach collection="where.fuzzyRes"  separator="or" item="item">
+                    `Res` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyRes!=null and where.rightFuzzyRes.size()>0">
+                (
+                <foreach collection="where.rightFuzzyRes"  separator="or" item="item">
+                    `Res` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.serveripList != null">
+                    `serverip` in
+                    <foreach collection="where.serveripList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyServerip!=null and where.fuzzyServerip.size()>0">
+                (
+                <foreach collection="where.fuzzyServerip"  separator="or" item="item">
+                    `Serverip` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyServerip!=null and where.rightFuzzyServerip.size()>0">
+                (
+                <foreach collection="where.rightFuzzyServerip"  separator="or" item="item">
+                    `Serverip` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.reqtimeList != null">
+                    `reqtime` in
+                    <foreach collection="where.reqtimeList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.reqtimeSt !=null">
+                `reqtime` >= #{where.reqtimeSt} and
+            </if>
+            <if test="where.reqtimeEd!=null">
+                `reqtime` &lt;= #{where.reqtimeEd} and
+            </if>
+                <if test="where.statusList != null">
+                    `status` in
+                    <foreach collection="where.statusList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyStatus!=null and where.fuzzyStatus.size()>0">
+                (
+                <foreach collection="where.fuzzyStatus"  separator="or" item="item">
+                    `Status` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyStatus!=null and where.rightFuzzyStatus.size()>0">
+                (
+                <foreach collection="where.rightFuzzyStatus"  separator="or" item="item">
+                    `Status` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+        </trim>
+    </update>
+
+
+    <resultMap type="packageModel.AppLog" id="AppLogMap">
+        <result property="id" column="id"/>
+        <result property="dt" column="dt"/>
+        <result property="uid" column="uid"/>
+        <result property="ip" column="ip"/>
+        <result property="method" column="method"/>
+        <result property="url" column="url"/>
+        <result property="v" column="v"/>
+        <result property="ua" column="ua"/>
+        <result property="aes" column="aes"/>
+        <result property="res" column="res"/>
+        <result property="serverip" column="serverip"/>
+        <result property="reqtime" column="reqtime"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+
+    <select id="queryAppLog" resultMap="AppLogMap">
+        select
+        <include refid="baseResult"></include>
+        from  `app_log`
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="id != null">
+                `id` = #{id} and
+            </if>
+            <if test="dt != null">
+                `dt` = #{dt} and
+            </if>
+            <if test="uid != null and uid!=''">
+                `uid` = #{uid} and
+            </if>
+            <if test="ip != null and ip!=''">
+                `ip` = #{ip} and
+            </if>
+            <if test="method != null and method!=''">
+                `method` = #{method} and
+            </if>
+            <if test="url != null and url!=''">
+                `url` = #{url} and
+            </if>
+            <if test="v != null and v!=''">
+                `v` = #{v} and
+            </if>
+            <if test="ua != null and ua!=''">
+                `ua` = #{ua} and
+            </if>
+            <if test="aes != null">
+                `aes` = #{aes} and
+            </if>
+            <if test="res != null and res!=''">
+                `res` = #{res} and
+            </if>
+            <if test="serverip != null and serverip!=''">
+                `serverip` = #{serverip} and
+            </if>
+            <if test="reqtime != null">
+                `reqtime` = #{reqtime} and
+            </if>
+            <if test="status != null and status!=''">
+                `status` = #{status} and
+            </if>
+            <if test = "(_parameter instanceof packageModel.AppLog$QueryBuilder) == true">
+                <if test="idList != null">
+                    `id` in
+                    <foreach collection="idList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="idSt !=null">
+                    `id` >= #{idSt} and
+                </if>
+                <if test="idEd!=null">
+                    `id` &lt;= #{idEd} and
+                </if>
+                <if test="dtList != null">
+                    `dt` in
+                    <foreach collection="dtList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="dtSt !=null">
+                    `dt` >= #{dtSt} and
+                </if>
+                <if test="dtEd!=null">
+                    `dt` &lt;= #{dtEd} and
+                </if>
+                <if test="uidList != null">
+                    `uid` in
+                    <foreach collection="uidList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyUid!=null and fuzzyUid.size()>0">
+                    (
+                    <foreach collection="fuzzyUid"  separator="or" item="item">
+                        `Uid` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyUid!=null and rightFuzzyUid.size()>0">
+                    (
+                    <foreach collection="rightFuzzyUid"  separator="or" item="item">
+                        `Uid` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="ipList != null">
+                    `ip` in
+                    <foreach collection="ipList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyIp!=null and fuzzyIp.size()>0">
+                    (
+                    <foreach collection="fuzzyIp"  separator="or" item="item">
+                        `Ip` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyIp!=null and rightFuzzyIp.size()>0">
+                    (
+                    <foreach collection="rightFuzzyIp"  separator="or" item="item">
+                        `Ip` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="methodList != null">
+                    `method` in
+                    <foreach collection="methodList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyMethod!=null and fuzzyMethod.size()>0">
+                    (
+                    <foreach collection="fuzzyMethod"  separator="or" item="item">
+                        `Method` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyMethod!=null and rightFuzzyMethod.size()>0">
+                    (
+                    <foreach collection="rightFuzzyMethod"  separator="or" item="item">
+                        `Method` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="urlList != null">
+                    `url` in
+                    <foreach collection="urlList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyUrl!=null and fuzzyUrl.size()>0">
+                    (
+                    <foreach collection="fuzzyUrl"  separator="or" item="item">
+                        `Url` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyUrl!=null and rightFuzzyUrl.size()>0">
+                    (
+                    <foreach collection="rightFuzzyUrl"  separator="or" item="item">
+                        `Url` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="vList != null">
+                    `v` in
+                    <foreach collection="vList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyV!=null and fuzzyV.size()>0">
+                    (
+                    <foreach collection="fuzzyV"  separator="or" item="item">
+                        `V` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyV!=null and rightFuzzyV.size()>0">
+                    (
+                    <foreach collection="rightFuzzyV"  separator="or" item="item">
+                        `V` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="uaList != null">
+                    `ua` in
+                    <foreach collection="uaList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyUa!=null and fuzzyUa.size()>0">
+                    (
+                    <foreach collection="fuzzyUa"  separator="or" item="item">
+                        `Ua` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyUa!=null and rightFuzzyUa.size()>0">
+                    (
+                    <foreach collection="rightFuzzyUa"  separator="or" item="item">
+                        `Ua` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="aesList != null">
+                    `aes` in
+                    <foreach collection="aesList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="aesSt !=null">
+                    `aes` >= #{aesSt} and
+                </if>
+                <if test="aesEd!=null">
+                    `aes` &lt;= #{aesEd} and
+                </if>
+                <if test="resList != null">
+                    `res` in
+                    <foreach collection="resList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyRes!=null and fuzzyRes.size()>0">
+                    (
+                    <foreach collection="fuzzyRes"  separator="or" item="item">
+                        `Res` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyRes!=null and rightFuzzyRes.size()>0">
+                    (
+                    <foreach collection="rightFuzzyRes"  separator="or" item="item">
+                        `Res` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="serveripList != null">
+                    `serverip` in
+                    <foreach collection="serveripList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyServerip!=null and fuzzyServerip.size()>0">
+                    (
+                    <foreach collection="fuzzyServerip"  separator="or" item="item">
+                        `Serverip` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyServerip!=null and rightFuzzyServerip.size()>0">
+                    (
+                    <foreach collection="rightFuzzyServerip"  separator="or" item="item">
+                        `Serverip` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="reqtimeList != null">
+                    `reqtime` in
+                    <foreach collection="reqtimeList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="reqtimeSt !=null">
+                    `reqtime` >= #{reqtimeSt} and
+                </if>
+                <if test="reqtimeEd!=null">
+                    `reqtime` &lt;= #{reqtimeEd} and
+                </if>
+                <if test="statusList != null">
+                    `status` in
+                    <foreach collection="statusList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyStatus!=null and fuzzyStatus.size()>0">
+                    (
+                    <foreach collection="fuzzyStatus"  separator="or" item="item">
+                        `Status` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyStatus!=null and rightFuzzyStatus.size()>0">
+                    (
+                    <foreach collection="rightFuzzyStatus"  separator="or" item="item">
+                        `Status` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+            </if>
+        </trim>
+    </select>
+
+    <select id="queryAppLogLimit1" resultMap="AppLogMap">
+        select
+        <include refid="baseResult"></include>
+        from  `app_log`
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="id != null">
+                `id` = #{id} and
+            </if>
+            <if test="dt != null">
+                `dt` = #{dt} and
+            </if>
+            <if test="uid != null and uid!=''">
+                `uid` = #{uid} and
+            </if>
+            <if test="ip != null and ip!=''">
+                `ip` = #{ip} and
+            </if>
+            <if test="method != null and method!=''">
+                `method` = #{method} and
+            </if>
+            <if test="url != null and url!=''">
+                `url` = #{url} and
+            </if>
+            <if test="v != null and v!=''">
+                `v` = #{v} and
+            </if>
+            <if test="ua != null and ua!=''">
+                `ua` = #{ua} and
+            </if>
+            <if test="aes != null">
+                `aes` = #{aes} and
+            </if>
+            <if test="res != null and res!=''">
+                `res` = #{res} and
+            </if>
+            <if test="serverip != null and serverip!=''">
+                `serverip` = #{serverip} and
+            </if>
+            <if test="reqtime != null">
+                `reqtime` = #{reqtime} and
+            </if>
+            <if test="status != null and status!=''">
+                `status` = #{status} and
+            </if>
+            <if test = "(_parameter instanceof packageModel.AppLog$QueryBuilder) == true">
+                    <if test="idList != null">
+                        `id` in
+                        <foreach collection="idList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="idSt !=null">
+                    `id` >= #{idSt} and
+                </if>
+                <if test="idEd!=null">
+                    `id` &lt;= #{idEd} and
+                </if>
+                    <if test="dtList != null">
+                        `dt` in
+                        <foreach collection="dtList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="dtSt !=null">
+                    `dt` >= #{dtSt} and
+                </if>
+                <if test="dtEd!=null">
+                    `dt` &lt;= #{dtEd} and
+                </if>
+                    <if test="uidList != null">
+                        `uid` in
+                        <foreach collection="uidList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyUid!=null and fuzzyUid.size()>0">
+                    (
+                    <foreach collection="fuzzyUid"  separator="or" item="item">
+                        `Uid` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyUid!=null and rightFuzzyUid.size()>0">
+                    (
+                    <foreach collection="rightFuzzyUid"  separator="or" item="item">
+                        `Uid` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="ipList != null">
+                        `ip` in
+                        <foreach collection="ipList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyIp!=null and fuzzyIp.size()>0">
+                    (
+                    <foreach collection="fuzzyIp"  separator="or" item="item">
+                        `Ip` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyIp!=null and rightFuzzyIp.size()>0">
+                    (
+                    <foreach collection="rightFuzzyIp"  separator="or" item="item">
+                        `Ip` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="methodList != null">
+                        `method` in
+                        <foreach collection="methodList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyMethod!=null and fuzzyMethod.size()>0">
+                    (
+                    <foreach collection="fuzzyMethod"  separator="or" item="item">
+                        `Method` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyMethod!=null and rightFuzzyMethod.size()>0">
+                    (
+                    <foreach collection="rightFuzzyMethod"  separator="or" item="item">
+                        `Method` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="urlList != null">
+                        `url` in
+                        <foreach collection="urlList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyUrl!=null and fuzzyUrl.size()>0">
+                    (
+                    <foreach collection="fuzzyUrl"  separator="or" item="item">
+                        `Url` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyUrl!=null and rightFuzzyUrl.size()>0">
+                    (
+                    <foreach collection="rightFuzzyUrl"  separator="or" item="item">
+                        `Url` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="vList != null">
+                        `v` in
+                        <foreach collection="vList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyV!=null and fuzzyV.size()>0">
+                    (
+                    <foreach collection="fuzzyV"  separator="or" item="item">
+                        `V` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyV!=null and rightFuzzyV.size()>0">
+                    (
+                    <foreach collection="rightFuzzyV"  separator="or" item="item">
+                        `V` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="uaList != null">
+                        `ua` in
+                        <foreach collection="uaList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyUa!=null and fuzzyUa.size()>0">
+                    (
+                    <foreach collection="fuzzyUa"  separator="or" item="item">
+                        `Ua` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyUa!=null and rightFuzzyUa.size()>0">
+                    (
+                    <foreach collection="rightFuzzyUa"  separator="or" item="item">
+                        `Ua` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="aesList != null">
+                        `aes` in
+                        <foreach collection="aesList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="aesSt !=null">
+                    `aes` >= #{aesSt} and
+                </if>
+                <if test="aesEd!=null">
+                    `aes` &lt;= #{aesEd} and
+                </if>
+                    <if test="resList != null">
+                        `res` in
+                        <foreach collection="resList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyRes!=null and fuzzyRes.size()>0">
+                    (
+                    <foreach collection="fuzzyRes"  separator="or" item="item">
+                        `Res` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyRes!=null and rightFuzzyRes.size()>0">
+                    (
+                    <foreach collection="rightFuzzyRes"  separator="or" item="item">
+                        `Res` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="serveripList != null">
+                        `serverip` in
+                        <foreach collection="serveripList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyServerip!=null and fuzzyServerip.size()>0">
+                    (
+                    <foreach collection="fuzzyServerip"  separator="or" item="item">
+                        `Serverip` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyServerip!=null and rightFuzzyServerip.size()>0">
+                    (
+                    <foreach collection="rightFuzzyServerip"  separator="or" item="item">
+                        `Serverip` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="reqtimeList != null">
+                        `reqtime` in
+                        <foreach collection="reqtimeList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="reqtimeSt !=null">
+                    `reqtime` >= #{reqtimeSt} and
+                </if>
+                <if test="reqtimeEd!=null">
+                    `reqtime` &lt;= #{reqtimeEd} and
+                </if>
+                    <if test="statusList != null">
+                        `status` in
+                        <foreach collection="statusList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyStatus!=null and fuzzyStatus.size()>0">
+                    (
+                    <foreach collection="fuzzyStatus"  separator="or" item="item">
+                        `Status` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyStatus!=null and rightFuzzyStatus.size()>0">
+                    (
+                    <foreach collection="rightFuzzyStatus"  separator="or" item="item">
+                        `Status` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+            </if>
+        </trim>
+        limit 1
+    </select>
+
+    <sql id="allResult">
+        <trim suffixOverrides=",">
+        `id`,
+        `dt`,
+        `uid`,
+        `ip`,
+        `method`,
+        `url`,
+        `v`,
+        `ua`,
+        `aes`,
+        `res`,
+        `serverip`,
+        `reqtime`,
+        `status`,
+        </trim>
+    </sql>
+
+
+
+    <sql id="baseResult">
+        <trim suffixOverrides=",">
+            <if test = "(_parameter instanceof packageModel.AppLog$QueryBuilder) == true">
+
+                <if test="fetchFields==null">
+                    <include refid="allResult"></include>
+                </if>
+                <if test="fetchFields!=null">
+                    <if test="fetchFields.AllFields !=null">
+                        <include refid="allResult"></include>
+                    </if>
+                    <if test="fetchFields.AllFields ==null and fetchFields.fetchFields==null and fetchFields.excludeFields==null and fetchFields.otherFields==null">
+                        <include refid="allResult"></include>
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.fetchFields!=null">
+                    <if test="fetchFields.fetchFields.id==true">
+                        `id`,
+                    </if>
+                    <if test="fetchFields.fetchFields.dt==true">
+                        `dt`,
+                    </if>
+                    <if test="fetchFields.fetchFields.uid==true">
+                        `uid`,
+                    </if>
+                    <if test="fetchFields.fetchFields.ip==true">
+                        `ip`,
+                    </if>
+                    <if test="fetchFields.fetchFields.method==true">
+                        `method`,
+                    </if>
+                    <if test="fetchFields.fetchFields.url==true">
+                        `url`,
+                    </if>
+                    <if test="fetchFields.fetchFields.v==true">
+                        `v`,
+                    </if>
+                    <if test="fetchFields.fetchFields.ua==true">
+                        `ua`,
+                    </if>
+                    <if test="fetchFields.fetchFields.aes==true">
+                        `aes`,
+                    </if>
+                    <if test="fetchFields.fetchFields.res==true">
+                        `res`,
+                    </if>
+                    <if test="fetchFields.fetchFields.serverip==true">
+                        `serverip`,
+                    </if>
+                    <if test="fetchFields.fetchFields.reqtime==true">
+                        `reqtime`,
+                    </if>
+                    <if test="fetchFields.fetchFields.status==true">
+                        `status`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.excludeFields!=null">
+                    <if test="fetchFields.excludeFields.id==null">
+                        `id`,
+                    </if>
+                    <if test="fetchFields.excludeFields.dt==null">
+                        `dt`,
+                    </if>
+                    <if test="fetchFields.excludeFields.uid==null">
+                        `uid`,
+                    </if>
+                    <if test="fetchFields.excludeFields.ip==null">
+                        `ip`,
+                    </if>
+                    <if test="fetchFields.excludeFields.method==null">
+                        `method`,
+                    </if>
+                    <if test="fetchFields.excludeFields.url==null">
+                        `url`,
+                    </if>
+                    <if test="fetchFields.excludeFields.v==null">
+                        `v`,
+                    </if>
+                    <if test="fetchFields.excludeFields.ua==null">
+                        `ua`,
+                    </if>
+                    <if test="fetchFields.excludeFields.aes==null">
+                        `aes`,
+                    </if>
+                    <if test="fetchFields.excludeFields.res==null">
+                        `res`,
+                    </if>
+                    <if test="fetchFields.excludeFields.serverip==null">
+                        `serverip`,
+                    </if>
+                    <if test="fetchFields.excludeFields.reqtime==null">
+                        `reqtime`,
+                    </if>
+                    <if test="fetchFields.excludeFields.status==null">
+                        `status`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.otherFields!=null and fetchFields.otherFields.size>0">
+                        <foreach collection="fetchFields.otherFields" index="index" item="item" separator=",">
+                        `#{item}`
+                        </foreach>
+                    </if>
+                </if>
+            </if>
+            <if test="(_parameter instanceof packageModel.AppLog$QueryBuilder) == false" >
+                <include refid="allResult"></include>
+            </if>
+
+        </trim>
+    </sql>
+
+
+</mapper>

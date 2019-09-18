@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imooc.bigdata.hos.dao.HbaseTransferMapper">
+  <resultMap id="HbaseTransferResultMap" type="com.imooc.bigdata.hos.model.Hbasetransfer">
+    <id column="applogid" property="applogid"/>
+    <result column="USER_NAME" property="userName"/>
+  </resultMap>
+
+
+  <select id="getHbaseTransfer" resultMap="HbaseTransferResultMap">
+    select * from hbasetransfer where id=#{applogid}
+  </select>
+  <update id="updateapplogid">
+    update hbasetransfer set applogid=#{applogid}  where id=#{startIndex}
+  </update>
+
+  <insert id="addbeginapplogid">
+    insert into hbasetransfer
+    (applogid,id)
+    values
+    (#{applogid},#{applogid})
+  </insert>
+
+</mapper>

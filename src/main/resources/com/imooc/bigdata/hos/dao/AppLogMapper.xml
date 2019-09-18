@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imooc.bigdata.hos.dao.AppLogMapper">
+
+    <resultMap id="TableTestResultMap" type="com.imooc.bigdata.hos.model.AppLog">
+        <result property="id" column="id"/>
+        <result property="dt" column="dt"/>
+        <result property="uid" column="uid"/>
+        <result property="ip" column="ip"/>
+        <result property="method" column="method"/>
+        <result property="url" column="url"/>
+        <result property="v" column="v"/>
+        <result property="ua" column="ua"/>
+        <result property="aes" column="aes"/>
+        <result property="res" column="res"/>
+        <result property="serverip" column="serverip"/>
+        <result property="reqtime" column="reqtime"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <select id="getAppLogList" resultMap="TableTestResultMap">
+        select * from app_log_2019_09_12_580000001 where
+        id <![CDATA[ >= ]]> #{applogid_start} AND id <![CDATA[ < ]]> #{applogid_end}
+    </select>
+</mapper>
